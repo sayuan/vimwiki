@@ -46,5 +46,5 @@ SED_CMD3="s/\[\($VALID_CHARS\+\)\](\($PROTOCOLS\)\($VALID_CHARS\+\)\.html\(#$VAL
 
 cat "$INPUT" | \
     sed "$SED_CMD1; $SED_CMD2; $SED_CMD3;" |
-    "$PANDOC" -s -f markdown -t html -c "$CSSFILE" -o "$OUTPUT"
+    "$PANDOC" -s -f markdown -t html -c "$CSSFILE" > "$OUTPUT"
 
