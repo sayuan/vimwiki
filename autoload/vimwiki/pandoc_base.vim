@@ -80,6 +80,8 @@ function! vimwiki#pandoc_base#follow_link(split, ...) "{{{ Parse link at cursor 
         let lnk = split(lnk, '#')[0]
       endif
       if !VimwikiLinkHandler(lnk)
+        " remove the extension from the filename if exists
+        let lnk = substitute(lnk, VimwikiGet('ext').'$', '', '')
         call vimwiki#base#open_link(cmd, lnk)
       endif
       return
