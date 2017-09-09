@@ -82,6 +82,9 @@ function! vimwiki#pandoc_base#follow_link(split, ...) "{{{ Parse link at cursor 
       if !VimwikiLinkHandler(lnk)
         " remove the extension from the filename if exists
         let lnk = substitute(lnk, VimwikiGet('ext').'$', '', '')
+
+        " workaround to support org-mode links
+        let lnk = substitute(lnk, '^file:', '', '')
         call vimwiki#base#open_link(cmd, lnk)
       endif
       return
